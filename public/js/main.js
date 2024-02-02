@@ -664,61 +664,35 @@ async function apiResult(input) {
   function putUpTitles(params) {
     possibles.style.display = "block";
     for (let i = numb; i < numb + 5; i++) {
-      if (details.items[i].volumeInfo.authors) {
-        if (details.items[i].volumeInfo.publisher) {
-          possibles.insertAdjacentHTML(
-            "beforeend",
-            `<div class="possible" id="${
-              details.items[i].id
-            }"><span class="accentText">${
-              details.items[i].volumeInfo.title
-            } </span>by ${
-              details.items[i].volumeInfo.authors
-            }, <span class="accentText">
+      var author, publisher, title, publishedDate;
+      details.items[i].volumeInfo.authors
+        ? (author = details.items[i].volumeInfo.authors[0])
+        : (author = "Unknown");
+      details.items[i].volumeInfo.publisher
+        ? (publisher = details.items[i].volumeInfo.publisher)
+        : (publisher = "Unknown Publisher");
+      details.items[i].volumeInfo.title
+        ? (title = details.items[i].volumeInfo.title)
+        : (title = "Unknown Title");
+      details.items[i].volumeInfo.publishedDate
+        ? (publishedDate = details.items[i].volumeInfo.publishedDate.slice(
+            0,
+            4
+          ))
+        : (publishedDate = "?????");
+      possibles.insertAdjacentHTML(
+        "beforeend",
+        `<div class="possible" id="${
+          details.items[i].id
+        }"><span class="accentText">${
+          details.items[i].volumeInfo.title
+        } </span>by ${
+          details.items[i].volumeInfo.authors
+        }, <span class="accentText">
 ${details.items[i].volumeInfo.publisher},</span> ${details.items[
-              i
-            ].volumeInfo.publishedDate.slice(0, 4)}</div>`
-          );
-        } else {
-          possibles.insertAdjacentHTML(
-            "beforeend",
-            `<div class="possible" id="${
-              details.items[i].id
-            }"><span class="accentText">${
-              details.items[i].volumeInfo.title
-            } </span>by ${
-              details.items[i].volumeInfo.authors
-            }, <span class="accentText"> Unknown Publisher,</span> ${details.items[
-              i
-            ].volumeInfo.publishedDate.slice(0, 4)}</div>`
-          );
-        }
-      } else {
-        if (details.items[i].volumeInfo.publisher) {
-          possibles.insertAdjacentHTML(
-            "beforeend",
-            `<div class="possible" id="${
-              details.items[i].id
-            }"><span class="accentText">${
-              details.items[i].volumeInfo.title
-            }</span> by Unknown,<span class="accentText">
-${details.items[i].volumeInfo.publisher},</span> ${details.items[
-              i
-            ].volumeInfo.publishedDate.slice(0, 4)}</div>`
-          );
-        } else {
-          possibles.insertAdjacentHTML(
-            "beforeend",
-            `<div class="possible" id="${
-              details.items[i].id
-            }"><span class="accentText">${
-              details.items[i].volumeInfo.title
-            } </span>by Unknown, <span class="accentText">Unknown Publisher</span>, ${details.items[
-              i
-            ].volumeInfo.publishedDate.slice(0, 4)}</div>`
-          );
-        }
-      }
+          i
+        ].volumeInfo.publishedDate.slice(0, 4)}</div>`
+      );
     }
     ////ADD EVENT LISTENERS TO POSSIBLES
     for (let possible of document.getElementsByClassName("possible")) {
@@ -1118,17 +1092,17 @@ async function booksUp(targetuser, targetElement, year) {
       }
       if (targetuser == userName) {
         //add trash can svg to end of book card
-        document.querySelector(`.book-card:last-child`).insertAdjacentHTML(
+        document.querySelector(`.card-${book}`).insertAdjacentHTML(
           "beforeend",
           `<span class="material-symbols-outlined card-delete">
 cancel
 </span>`
         );
         //add event listener to trash can svg
-        document
-          .querySelector(`.book-card:last-child .card-delete`)
-          .addEventListener("click", async () => {
-            //create and put up new centered div with class "confirm-delete" that says "Are you sure you want to delete this book?" and has two buttons, "Yes" and "No"
+        const trashCan = document.querySelector(`.card-${book} .card-delete`);
+        trashCan.addEventListener("click", async () => {
+          //create and put up new centered div with class "confirm-delete" that says "Are you sure you want to delete this book?" and has two buttons, "Yes" and "No"
+          if (trashCan.classList.contains("confirm-open") != true) {
             document.querySelector(`.card-${book}`).insertAdjacentHTML(
               "afterend",
               `<div class="confirm-delete">
@@ -1139,32 +1113,35 @@ Are you sure you want to delete this book?
 </div>
 </div>`
             );
-            //add event listener to the "Yes" button
-            document
-              .querySelector(".confirm-yes")
-              .addEventListener("click", async () => {
-                //delete the book from the user's books array
-                await updateDoc(doc(db, "users", user.uid), {
-                  [`books.${book}`]: deleteField(),
-                });
-                //delete the book from the userDoc.books object
-                delete userDoc.books[book];
-                //delete the book from the allUsers.books object
-                delete allUsers[`${userName}`].books[book];
+            trashCan.classList.add("confirm-open");
+          }
+          //add event listener to the "Yes" button
+          document
+            .querySelector(".confirm-yes")
+            .addEventListener("click", async () => {
+              //delete the book from the user's books array
+              await updateDoc(doc(db, "users", user.uid), {
+                [`books.${book}`]: deleteField(),
+              });
+              //delete the book from the userDoc.books object
+              delete userDoc.books[book];
+              //delete the book from the allUsers.books object
+              delete allUsers[`${userName}`].books[book];
 
-                //delete the book card
-                document.querySelector(`.book-card:last-child`).remove();
-                //delete the confirm-delete div
-                document.querySelector(".confirm-delete").remove();
-              });
-            //add event listener to the "No" button
-            document
-              .querySelector(".confirm-no")
-              .addEventListener("click", () => {
-                //delete the confirm-delete div
-                document.querySelector(".confirm-delete").remove();
-              });
-          });
+              //delete the book card
+              document.querySelector(`.card-${book}`).remove();
+              //delete the confirm-delete div
+              document.querySelector(".confirm-delete").remove();
+            });
+          //add event listener to the "No" button
+          document
+            .querySelector(".confirm-no")
+            .addEventListener("click", () => {
+              //delete the confirm-delete div
+              document.querySelector(".confirm-delete").remove();
+              trashCan.classList.remove("confirm-open");
+            });
+        });
       }
     }
   }

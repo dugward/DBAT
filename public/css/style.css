@@ -470,6 +470,7 @@ book-list {
 }
 
 .confirm-buttons {
+  cursor: pointer;
   display: inline-block;
   margin-left: 1em;
   -webkit-user-drag: none;
