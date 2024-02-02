@@ -1,6 +1,6 @@
 # DBAT (Dugward's book tracker)
 
-Track your progress through the boundless sea of books you should read. Laugh at your friends' choices and pace.
+Ship's log through the boundless sea of books to read.
 
 ## To Use
 
@@ -8,4 +8,4 @@ Sign in and click away!
 
 ## Images
 
-![Example image 1](thumb.png)
+![Example image 1](public/thumb.png)
