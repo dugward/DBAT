@@ -1,0 +1,196 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Metastuff
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta  
+      name="description"
+      content="Track your progress through the boundless sea of books you should read. Laugh at your friends' choices and pace."
+    /> 
+    <title>DBAT</title>
+    <meta property="og:description" content="Track your progress through the boundless sea of books you should read. Laugh at your friends' choices and pace." />
+    <meta property="og:site_name" content="DBAT" />  
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dbat.dugward.com" />
+    <!-- 1200X600 is good -->
+    <meta
+      property="og:image" 
+      content="https://dbat.dugward.com/thumb.png"
+    />
+    <link rel="icon" type="image/x-icon" href="img/favicon.png" />
+
+    <!-- FONTS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<link rel="stylesheet" href="https://use.typekit.net/ych2pls.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link
+      href="
+  https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css
+    "
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/spinkit.css" />
+
+    <!-- the page
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  </head>
+
+  <body>
+       <div class="spinner topspin">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      <div class="wrapper">
+    <!-- login button -->
+<div class="blur"></div>
+    <div class="loginButton">
+      LOG IN <img src="img/google.svg" height="1em" alt="google icon" />
+    </div>
+    <!-- header -->
+    <header>
+      <div id="title">
+        <span class="fulltitle">Dugward's Book Absorption Tracker</span
+        ><span class="shorttitle">DBAT</span>
+      </div>
+
+      <div class="menuIcons">
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" id="closemenu" class=" close menuicon" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      
+<svg xmlns="http://www.w3.org/2000/svg" id="burgermenu" class="burger menuicon" viewBox="0 0 24 24"><title>menu</title><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+      </div>
+
+      <div class="navItem firstNavItem listsButton closed">
+        <a>Book Log</a>
+      </div>
+      <div class="navItem usersButton closed"><a>Users</a></div>
+
+      <div class="navItem lastNavItem logout logoutButton">
+        <a>Log Out</a>
+      </div>
+
+    </header>
+
+
+
+    <!-- lists drawer -->
+
+    <!-- <div class="listsDrawer">
+
+      <svg xmlns="http://www.w3.org/2000/svg" class="drawerclose" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      <br />
+      <div class="lists">
+        <div class="listsnotmore"></div>
+        <div class="drawerMoreButton">
+          MORE
+          <svg xmlns="http://www.w3.org/2000/svg" class="drawermore" viewBox="0 0 24 24"><title>chevron-down</title><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+        </div>
+        <div class="drawerMore"></div>
+      </div>
+    </div> -->
+
+    <div class="nonDugward">
+      <!-- progress bar main-->
+      <!-- <div class="progressbar main"></div> -->
+
+      <!-- popup page -->
+      <div class="popup">
+
+         
+                <div class="spinner popupspin">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <!-- leaders -->
+        <!-- <div class="leadersInner">
+       
+        </div> -->
+        <!-- users -->
+        <div class="users-inner">
+
+
+
+
+        </div>
+        </div>
+        <!-- main -->
+        <div class="spinner main">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+        <!-- <div class="five-warning">You already have five chosen!</div> -->
+        <main-grid> <!-- a simple input box -->
+<input type="text" class="input" placeholder="Book Info (Title /Author / Publisher)" />
+<div class="poss-and-more">
+<div class="possibles">
+
+  
+</div>
+<div class="possible-button more">More</div>
+<div class="possible-button close"><svg xmlns="http://www.w3.org/2000/svg" class="possibleclose" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg></div>
+</div>
+<book-list>
+
+</book-list>
+</main-grid>
+        <!-- popup box in center of screen for editing movie details -->
+        <!-- <div id="edit-div">
+          new id: <input type="text" class="newid" />
+          <button id="edit-div-enter">enter</button
+          ><button class="edit-div-cancel">cancel</button>
+        </div> -->
+
+      </div>
+      <!-- admin page -->
+      <!-- <div class="adminMain">
+        <span class="addlist">add new list </span>
+        <span class="adminback"> back</span>
+        <button class="clear-top-fives-pre">clear top 5s</button
+        ><button class="clear-top-fives-confirm">confirm</button
+        ><button class="clear-top-fives-cancel">cancel</button><br /><br />
+        <div class="adminMainLists"></div>
+      </div> -->
+
+      <!-- <div class="listEntry">
+        <span class="entryback"> back</span><br />
+        <input
+          type="text"
+          class="listnameentry"
+          placeholder="list name"
+        /><br />
+        <textarea class="listdescription"></textarea>
+
+        <textarea
+          name="listInput"
+          class="listInputbox"
+          placeholder="Enter text"
+        ></textarea>
+        <button class="listSubmit">Submit</button>
+      </div> -->
+      <!-- <div class="listSearchResult">
+        <input type="submit" class="finalsubmit" value="Submit" />
+      </div> -->
+    </div>
+    <!-- footer -->
+    <footer>
+      Other little <a href="https://www.dugward.com">things by dugward</a>.
+    </footer>
+    <!-- scripties––––––––––––––––––––––––––––––– -->
+
+    <script type="module" src="./js/main.js"></script>
+    </div>
+  </body>
+</html> 

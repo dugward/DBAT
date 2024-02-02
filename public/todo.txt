@@ -1,0 +1,6 @@
+
+------
+
+on signin, if followed user's booklists have books since last login (??) 
+    add last login to user thingy
+    notification that says: BLAH has new read books; these notes stack
