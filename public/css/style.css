@@ -438,14 +438,20 @@ book-list {
   width: 100%;
   margin-bottom: 1em;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 0.6em 2em;
+  font-size: max(15px);
 }
 
 .card-delete {
-  font-size: 1.3em;
+  font-size: 20px;
   padding-top: 0.15em;
   cursor: pointer;
+    -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .confirm-delete {
@@ -453,6 +459,7 @@ book-list {
   margin-bottom: 1em;
   padding-left: 0.7em;
   padding-right: 0.7em;
+  font-size: 15px;
 }
 
 .confirm-buttons {
@@ -472,14 +479,14 @@ book-list {
 }
 
 .book-title {
-  width: fit-content;
-  min-width: 13em;
+  width: 100%;
+
 }
 
-.book-rating {
-}
+
 
 .book-date {
+
 }
 
 .leaderRow {
@@ -1173,7 +1180,7 @@ footer a {
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 753px) {
   html {
     scroll-padding-top: 7rem;
   }
@@ -1208,6 +1215,11 @@ footer a {
     color: transparent;
     font-size: 1.2em;
   }
+
+  .book-rating {
+  margin-left: auto;
+
+}
 
   .year-count-text {
     margin-bottom: 1.5em;
@@ -1285,6 +1297,12 @@ footer a {
     line-height: 1.45em;
     padding: 0.8em 1em 1.5em;
     margin: 1.5em auto 0;
+  }
+    .book-title {
+    max-width: 16em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
