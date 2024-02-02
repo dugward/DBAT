@@ -134,6 +134,11 @@ const putUpUserNames = () => {
     
     </div>`
   );
+  ////close button
+
+  document.querySelector(".popupclose.names").addEventListener("click", () => {
+    popupClose();
+  });
   for (let thisuser in allUsers) {
     if (thisuser != userName) {
       document.querySelector(".users-inner").insertAdjacentHTML(
@@ -185,13 +190,6 @@ const putUpUserNames = () => {
             .classList.remove("userup");
         });
     });
-    ////close button
-
-    document
-      .querySelector(".popupclose.names")
-      .addEventListener("click", () => {
-        popupClose();
-      });
 
     ////the follow button event listeners
     for (let followButton of document.getElementsByClassName("follow-button")) {
