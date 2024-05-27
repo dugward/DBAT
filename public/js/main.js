@@ -30,7 +30,7 @@ import {
 //// FIREBASE STARTUP
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAb9eAoHWqWh4isXgM2Z5_7uZ-9XOFsYZY",
+  apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
   authDomain: "dbat-98661.firebaseapp.com",
   projectId: "dbat-98661",
   storageBucket: "dbat-98661.appspot.com",
@@ -652,7 +652,7 @@ async function apiResult(input) {
   possibles.innerHTML = "";
   input = input.replace("&", "and");
   const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=${input}&key=AIzaSyDz7RLi3HFqoAlJVKOOK6e3kIOMdGTR8Gg`
+    `https://www.googleapis.com/books/v1/volumes?q=${input}&key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
   );
   details = await response.json();
   console.log(details);
